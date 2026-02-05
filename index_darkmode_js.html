@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Romantikstadt Steyr</title>
+
+  <style>
+    /* =========================
+       Theme (Light default)
+       ========================= */
+    :root{
+      --bg: #E3E3E3;
+      --surface: #ffffff;
+      --text: #2a2a2a;
+      --muted: #585858;
+
+      --nav-bg: #007baf;
+      --nav-text: #E3E3E3;
+
+      --accent: #007baf;
+
+      --link: #0b6ea0;
+      --link-on-nav: #E3E3E3;
+
+      --shadow: 0 10px 24px rgba(0,0,0,.08);
+      --radius: 14px;
+    }
+
+    /* Dark theme overrides */
+    [data-theme="dark"]{
+      --bg: #0f1620;
+      --surface: #121c28;
+      --text: #e9eef5;
+      --muted: #b7c3d4;
+
+      --nav-bg: #0b3d55;
+      --nav-text: #e9eef5;
+
+      --accent: #4bb3e6;
+
+      --link: #7ad1ff;
+      --link-on-nav: #e9eef5;
+
+      --shadow: 0 10px 24px rgba(0,0,0,.35);
+    }
+
+    /* =========================
+       Base layout
+       ========================= */
+    body{
+      margin: 0;
+      font-family: Bahnschrift, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    header{
+      font-family: "Calisto MT", Georgia, serif;
+      padding: 18px 18px 8px;
+    }
+
+    h1{
+      margin: 0;
+      color: var(--accent);
+      font-size: 44px; /* fixed: "44 px" -> "44px" */
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    nav{
+      background: var(--nav-bg);
+      color: var(--nav-text);
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    nav .links{
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      font-size: 16px;
+    }
+
+    nav a{
+      color: var(--link-on-nav);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    nav a:hover{
+      text-decoration: underline;
+    }
+
+    /* Darkmode button */
+    .theme-btn{
+      border: 1px solid rgba(255,255,255,.35);
+      background: transparent;
+      color: var(--nav-text);
+      padding: 8px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 700;
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .theme-btn:hover{
+      background: rgba(255,255,255,.10);
+    }
+
+    main{
+      padding: 18px;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .card{
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      margin: 14px 0;
+    }
+
+    h2{
+      font-family: "Calisto MT", Georgia, serif;
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 22px; /* fixed */
+      margin-top: 0;
+    }
+
+    h3{
+      font-size: 18px; /* fixed */
+      margin: 0;
+    }
+
+    p{ color: var(--muted); }
+
+    ul{ color: var(--muted); }
+
+    /* Images responsive */
+    img{
+      max-width: 100%;
+      height: auto;
+    }
+
+    .img-row{
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .img-row img{
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      width: 300px;
+      max-width: 100%;
+    }
+
+    .backtotop{
+      display: inline-flex;
+      justify-content: flex-end;
+      width: 100%;
+      margin-top: 18px;
+    }
+
+    /* Small screens */
+    @media (max-width: 520px){
+      h1{ font-size: 34px; }
+      nav .links{ font-size: 15px; }
+    }
+  </style>
+</head>
+
+<body>
+  <a id="top"></a>
+
+  <header>
+    <h1>
+      Willkommen in Steyr
+      <img src="bilder/logo steyr ohne hintergrund.png" alt="Logo Steyr" height="30" />
+    </h1>
+  </header>
+
+  <nav>
+    <div class="links">
+      <a href="https://www.steyr-nationalpark.at/orte/region/gastronomie-steyr.html">Gastronomie</a> |
+      <a href="https://www.steyr-nationalpark.at/orte/region/unterkuenfte-steyr.html">Unterkünfte</a> |
+      <a href="https://www.steyr-nationalpark.at/advent.html">Advent in Steyr</a> |
+      <a href="https://www.steyr-nationalpark.at/orte/region/steyr-am-fluss-der-zeit/oesterreich-angebot/detail/7720/steyrer-augenblicke.html">Steyr Moments – Angebot</a>
+    </div>
+
+    <!-- JS Darkmode Button -->
+    <button class="theme-btn" id="themeToggle" type="button" aria-label="Darkmode umschalten">
+      <span id="themeIcon">🌙</span>
+      <span id="themeText">Darkmode</span>
+    </button>
+  </nav>
+
+  <main>
+    <div class="card">
+      <h2>Steyr am Nationalpark – natürlich romantisch!</h2>
+      <p>
+        Steyr am Nationalpark, reich an Kultur, Industrie, Natur und Architektur ist eine lebens- und liebenswerte Kleinstadt.
+        Die 1000-jährige Stadt liegt inmitten der Österreichischen Romantikstraße zwischen Salzburg und Wien und ist ein wahres Architekturjuwel.
+        Am historischen Stadtplatz reihen sich Bürgerhäuser aus verschiedenen Stilepochen harmonisch aneinander.
+        Malerisch ist der Zusammenfluss von Enns und Steyr unterhalb des Schlosses, die beiden Flüsse bestimmen seit Jahrhunderten die Entwicklung der Stadt.
+        Erleben Sie das besondere Flair der Stadt Steyr und überzeugen Sie sich selbst von der harmonischen Symbiose zwischen traditionsreicher Vergangenheit und pulsierender Gegenwart!
+      </p>
+
+      <div class="img-row">
+        <img src="bilder/zweifluesseestadt.jpg" alt="Zusammenfluss der Flüsse" height="170" />
+        <img src="bilder/stadtplatz.jpg" alt="Steyrer Stadtplatz" height="170" />
+        <img src="bilder/panoramalift.jpg" alt="Panoramalift" height="170" />
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>In Steyr ist immer was los – entscheiden Sie sich für eine dieser Aktivitäten:</h2>
+      <ul>
+        <li>
+          <b>Vom höchsten Turm in den tiefsten Keller</b><br />
+          Begleiten Sie die Steyrer Nachtwächter auf Zeitreise in die Vergangenheit und lauschen Sie ihren Gschichtln und Anekdoten!
+        </li>
+        <li>
+          <b>Steyr erschweben</b><br />
+          Der Sprung vom Mittelalter ins Hightech-Zeitalter gelingt in Steyr mühelos beim lautlosen Schweben auf den Segways, den ultimativen Kult-Rollern!
+        </li>
+        <li>
+          <b>Ein Eldorado für Naturliebhaber</b><br />
+          In nur 30 Autominuten erreicht man das Besucherzentrum Ennstal, den idealen Ausgangspunkt für alle Touren in den Nationalpark Kalkalpen.
+        </li>
+        <li>
+          <b>Advent in Steyr</b><br />
+          In der Adventzeit verwandelt sich Steyr zu Österreichs offizieller Christkindlstadt. Das Postamt und die Wallfahrtskirche in Christkindl,
+          das Steyrer Kripperl oder das Weihnachtsmuseum mit Erlebnisbahn sind nur einige der vorweihnachtlichen Attraktionen.
+        </li>
+      </ul>
+
+      <div class="img-row">
+        <img src="bilder/nationalpark kalkalpen.jpg" alt="Nationalpark Kalkalpen" height="185" />
+        <img src="bilder/nachtwaechter.jpg" alt="Nachtwächter" height="185" />
+        <img src="bilder/christkindl.jpg" alt="Christkindl" height="185" />
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 style="text-align:center;">Es gibt viel zu entdecken bei uns – wir freuen uns auf Ihren Besuch!</h2>
+      <div class="backtotop">
+        <a href="#top" title="Nach oben">
+          <img src="bilder/pfeil.png" alt="Nach oben" height="50" />
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // =========================
+    // Darkmode (JavaScript)
+    // =========================
+
+    const STORAGE_KEY = "theme"; // "light" | "dark"
+
+    const btn = document.getElementById("themeToggle");
+    const icon = document.getElementById("themeIcon");
+    const text = document.getElementById("themeText");
+
+    function setTheme(theme){
+      document.documentElement.setAttribute("data-theme", theme);
+      localStorage.setItem(STORAGE_KEY, theme);
+
+      const isDark = theme === "dark";
+      icon.textContent = isDark ? "☀️" : "🌙";
+      text.textContent = isDark ? "Lightmode" : "Darkmode";
+    }
+
+    function getPreferredTheme(){
+      // 1) gespeicherte Auswahl
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved === "dark" || saved === "light") return saved;
+
+      // 2) System-Einstellung
+      const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+      return prefersDark ? "dark" : "light";
+    }
+
+    // Start
+    setTheme(getPreferredTheme());
+
+    // Toggle on click
+    btn.addEventListener("click", () => {
+      const current = document.documentElement.getAttribute("data-theme") || "light";
+      setTheme(current === "dark" ? "light" : "dark");
+    });
+  </script>
+</body>
+</html>
